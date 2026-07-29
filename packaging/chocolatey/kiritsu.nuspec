@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>kiritsu</id>
+    <version>__VERSION__</version>
+    <title>Kiritsu</title>
+    <authors>Kiritsu</authors>
+    <owners>Kiritsu</owners>
+    <projectUrl>https://kiritsu.app</projectUrl>
+    <iconUrl>https://kiritsu.app/kiritsu.png</iconUrl>
+    <licenseUrl>https://github.com/kiritsuapp/kiritsu-releases/blob/main/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <packageSourceUrl>https://github.com/kiritsuapp/kiritsu-releases/tree/main/packaging/chocolatey</packageSourceUrl>
+    <releaseNotes>https://github.com/kiritsuapp/kiritsu-releases/releases/tag/v__VERSION__</releaseNotes>
+    <copyright>Copyright © 2026 Kiritsu</copyright>
+    <tags>kiritsu study productivity learning education srs pomodoro desktop</tags>
+    <summary>A private, offline-first study companion.</summary>
+    <description>Kiritsu is a private, offline-first study companion for organizing materials and topics, planning work, logging study activity, running focus sessions, and reviewing with spaced repetition.</description>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

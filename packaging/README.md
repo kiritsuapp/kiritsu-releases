@@ -19,3 +19,10 @@ updates after the first manifest is accepted.
 These repositories require a dedicated package-signing key. Their generated
 indexes must not be committed by hand. The release automation will generate and
 sign APT and RPM metadata after the public key and CI signing secret are created.
+
+## Chocolatey
+
+The `chocolatey` directory is a tokenized Chocolatey Community Repository
+package. The publishing workflow downloads the matching signed NSIS release,
+injects its SHA-256 checksum, validates the package, and submits it for
+moderation.

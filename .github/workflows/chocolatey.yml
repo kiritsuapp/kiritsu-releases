@@ -1,0 +1,49 @@
+name: Publish Chocolatey package
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release version without the v prefix
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Prepare package
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          $asset = "Kiritsu_${env:VERSION}_x64-setup.exe"
+          gh release download "v$env:VERSION" --repo kiritsuapp/kiritsu-releases --pattern $asset --dir "$env:RUNNER_TEMP"
+          $checksum = (Get-FileHash "$env:RUNNER_TEMP\$asset" -Algorithm SHA256).Hash.ToLowerInvariant()
+          Get-ChildItem packaging/chocolatey -Recurse -File | ForEach-Object {
+            $content = Get-Content $_.FullName -Raw
+            $content = $content.Replace('__VERSION__', $env:VERSION).Replace('__CHECKSUM__', $checksum)
+            Set-Content $_.FullName $content -NoNewline
+          }
+
+      - name: Pack
+        shell: pwsh
+        run: choco pack packaging/chocolatey/kiritsu.nuspec --outputdirectory artifacts
+
+      - name: Submit to Chocolatey Community Repository
+        shell: pwsh
+        env:
+          CHOCOLATEY_API_KEY: ${{ secrets.CHOCOLATEY_API_KEY }}
+        run: choco push "artifacts\kiritsu.${{ inputs.version }}.nupkg" --source https://push.chocolatey.org/ --api-key "$env:CHOCOLATEY_API_KEY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kiritsu-chocolatey-${{ inputs.version }}
+          path: artifacts/*.nupkg
