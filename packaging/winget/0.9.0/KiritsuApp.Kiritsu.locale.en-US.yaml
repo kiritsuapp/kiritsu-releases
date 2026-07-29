@@ -1,0 +1,21 @@
+# Created for submission to microsoft/winget-pkgs.
+PackageIdentifier: KiritsuApp.Kiritsu
+PackageVersion: 0.9.0
+PackageLocale: en-US
+Publisher: KiritsuApp
+PublisherUrl: https://github.com/kiritsuapp
+PublisherSupportUrl: https://github.com/kiritsuapp/kiritsu-website
+PackageName: Kiritsu
+PackageUrl: https://github.com/kiritsuapp/kiritsu-releases
+License: MIT
+LicenseUrl: https://github.com/kiritsuapp/kiritsu-releases/blob/main/LICENSE
+ShortDescription: A private, offline-first study companion.
+Description: Model study materials, plan reviews, run focus sessions, and understand progress in a private, offline-first desktop workspace.
+Tags:
+  - education
+  - focus
+  - learning
+  - productivity
+  - study
+ManifestType: defaultLocale
+ManifestVersion: 1.10.0

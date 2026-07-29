@@ -1,0 +1,6 @@
+# Created for submission to microsoft/winget-pkgs.
+PackageIdentifier: KiritsuApp.Kiritsu
+PackageVersion: 0.9.0
+DefaultLocale: en-US
+ManifestType: version
+ManifestVersion: 1.10.0
