@@ -7,7 +7,7 @@ submit Kiritsu to `microsoft/winget-pkgs`. Validate a version directory on
 Windows before submission:
 
 ```powershell
-winget validate packaging/winget/0.9.0
+winget validate packaging/winget/0.9.1
 ```
 
 New releases must update the version, immutable release URL, SHA-256 checksum,
